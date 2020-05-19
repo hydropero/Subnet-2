@@ -18,7 +18,13 @@ def questionCreationFunc():
         generatedcirdlist.append([x, y])
 
         count += 1
-    print(generatedcirdlist)
+    return generatedcirdlist
+
+
+def textquestiongenerator():
+
+
+
 
 
 
@@ -32,9 +38,16 @@ def test2():
 
 
 def test5():
-    print("Starting the test!")
 
-    print("Quick what is /" + str(randCidrGenerator) + "in decimal form")
+    questionanswerpair = questionCreationFunc()
+
+    print("Starting the test!")
+    for i in range(0,3):
+        counter = 0
+        print("Quick what is /" + str(questionanswerpair[counter]) + "in decimal form")
+        useranswer = input('Enter in decimal form')
+
+
 def startup():
 
     starter = True
