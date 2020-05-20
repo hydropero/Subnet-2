@@ -2,8 +2,13 @@ import string
 import sys
 import random
 import cidr_dec_conv
-from tkinter import *
+import re
 
+
+switchreg = "[^1234a-z]+"
+
+
+globallistscore = []
 
 def questionCreationFunc():
 
@@ -16,69 +21,116 @@ def questionCreationFunc():
 
 def textquestiongenerator():
     list = []
-    a = "Quick, convert convert this number to it's alternative notation -> /"
-    b = "Please convert from decimal notation to CIDR notation -> :"
-    c = "Convert from CIDR notation back to decimal -> /"
+    a = "Quick, convert convert this number to the alternative notation -> "
+    b = "Please convert to CIDR notation -> "
+    c = "Convert to decimal -> /"
     list.append(a)
     list.append(b)
     list.append(c)
-    print(len(list))
     choice = random.randint(0, 2)
-    print(choice)
+
     return list[choice]
 
 def questionblendgenerator():
     text = textquestiongenerator()
     notation = questionCreationFunc()
-    print(str(text) + str(notation))
     cnotation = notation[0]
     dnotation = notation[1]
     oneortwogen = random.randint(0, 1)
     rnotation = notation[oneortwogen]
 
     if text[0] == 'Q':
-        fullq = text + str(rnotation)
-        print(fullq)
+        if oneortwogen == 0:
+            fullq = text + '/' + str(rnotation)
+            print(fullq)
+        else:
+            fullq = text + str(rnotation)
+            print(fullq)
+        answer1 = str(input("Enter your input here: "))
+        if oneortwogen == 0:
+
+            if str(answer1) == str(dnotation):
+
+                print('Correct!')
+                globallistscore.append(1)
+                return
+            else:
+                print('WRONG!')
+                globallistscore.append(0)
+                return
+        else:
+            if str(answer1) == str(cnotation):
+                print('Correct!')
+                globallistscore.append(1)
+                return
+            else:
+                print('WRONG!')
+                globallistscore.append(0)
+                return
+
     elif text[0] == 'P':
         fullqtwo = text + str(dnotation)
         print(fullqtwo)
+        answer2 = input("Enter your input here: /")
+        if str(answer2) == str(cnotation):
+            print('Correct')
+            globallistscore.append(1)
+            return
+        else:
+            print('WRONG!')
+            globallistscore.append(0)
+            return
+
     elif text[0] == 'C':
         fullqthree = text + str(cnotation)
         print(fullqthree)
+        answer3 = input("Enter your input here: ")
+        if str(answer3) == str(dnotation):
+            print('Correct')
+            globallistscore.append(1)
+            return
+        else:
+            print('WRONG!')
+            globallistscore.append(0)
+            return
 
 
 
-questionblendgenerator()
 
 def test():
     return cidrcalculator()
 
 def test2():
+    print("")
+
+def test3():
     print("Apparently works fine now")
 
 
-def test5():
+def test4():
 
     questionanswerpair = questionCreationFunc()
 
 
-
     print("Starting the test!")
-    for i in range(0,3):
-        counter = 0
-        print("Quick what is /" + str(questionanswerpair[counter]) + "in decimal form")
-        useranswer = input('Enter in decimal form')
+    print('-------------------\n\n')
+    for i in range(0, 10):
+        questionblendgenerator()
+
+    print(len(globallistscore))
+def test5():
+    print('anything else')
 
 
 def startup():
 
     starter = True
     while starter:
-        print("Welcome to the IP Addressing/Subnetting Tool")
+        print("\nWelcome to the IP Addressing/Subnetting Tool\n")
         intro = str(input("Would you like to get started? Y / N: "))
         intro = intro.upper()
         if intro == 'Y':
-            print("Great let's begin!")
+            print("--------------------------------------------------------------------------")
             optionsmenu()
         elif intro == 'N':
             print("Sorry to hear that, maybe next time!")
@@ -86,36 +138,31 @@ def startup():
         else:
             print("Invalid option, please try again")
 
+
 def optionsmenu():
-    print("we're now in the options menu function")
     starter = True
+
     while starter:
 
         print("Please select a tool from the options below\n")
         print("For an in depth subnetting tutorial select ---------------------------> [1]")
         print("To perform a CIDR to decimal subnet conversion or vice versa select --> [2]")
         print("To determine network/subnet boundaries select ------------------------> [3]")
-        print("To request subnetting practice questions select ----------------------> [4]")
-        print("To run the subnetting gauntlet select --------------------------------> [5]")
-        switch_answer = input("Please enter your selection here: ")
+        print("To run the subnetting gauntlet select --------------------------------> [4]")
+        switch_answer = input("\nPlease enter your selection here: ")
+        list = ['1', '2', '3', '4']
+        if switch_answer not in list:
+            print("\nInvalid selection please try again\n")
+            optionsmenu()
+        else:
+            switcher = {
+                "1": "test",
+                "2": test2,
+                "3": test3,
+                "4": test4,
+            }
 
-        switcher = {
-            "1": "test",
-            "2": test,
-            "3": test2,
-            "4": "test4",
-            "5": test5
-
-
-        }
-
-        switcher[switch_answer]()
-
-
-
-
-
-
+            switcher[switch_answer]()
 
 
 def cidrcalculator():

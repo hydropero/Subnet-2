@@ -63,7 +63,7 @@ def cidrconvert(cidr):
         stringedsublist.append(i)
 
     test = ".".join(stringedsublist)
-    print(test)
+
     return test
 
 
