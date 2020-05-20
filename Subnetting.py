@@ -7,28 +7,48 @@ from tkinter import *
 
 def questionCreationFunc():
 
-    generatedcirdlist= []
-
-
-    for i in range(0, 10):
-        count = 0
-        randCidrGenerator = random.randint(10, 32)
-        x = randCidrGenerator
-        y = cidr_dec_conv.cidrconvert(x)
-        generatedcirdlist.append([x, y])
-
-        count += 1
-    return generatedcirdlist
+    randCidrGenerator = random.randint(0, 32)
+    x = randCidrGenerator
+    y = cidr_dec_conv.cidrconvert(x)
+    generatedcidrlist = [x, y]
+    return generatedcidrlist  # format of list is [[32], [255.255.255.255]]
 
 
 def textquestiongenerator():
+    list = []
+    a = "Quick, convert convert this number to it's alternative notation -> /"
+    b = "Please convert from decimal notation to CIDR notation -> :"
+    c = "Convert from CIDR notation back to decimal -> /"
+    list.append(a)
+    list.append(b)
+    list.append(c)
+    print(len(list))
+    choice = random.randint(0, 2)
+    print(choice)
+    return list[choice]
+
+def questionblendgenerator():
+    text = textquestiongenerator()
+    notation = questionCreationFunc()
+    print(str(text) + str(notation))
+    cnotation = notation[0]
+    dnotation = notation[1]
+    oneortwogen = random.randint(0, 1)
+    rnotation = notation[oneortwogen]
+
+    if text[0] == 'Q':
+        fullq = text + str(rnotation)
+        print(fullq)
+    elif text[0] == 'P':
+        fullqtwo = text + str(dnotation)
+        print(fullqtwo)
+    elif text[0] == 'C':
+        fullqthree = text + str(cnotation)
+        print(fullqthree)
 
 
 
-
-
-
-questionCreationFunc()
+questionblendgenerator()
 
 def test():
     return cidrcalculator()
@@ -40,6 +60,8 @@ def test2():
 def test5():
 
     questionanswerpair = questionCreationFunc()
+
+
 
     print("Starting the test!")
     for i in range(0,3):
