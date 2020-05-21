@@ -61,7 +61,8 @@ def cidrconvert(cidr):
     for i in totalsubsizelist:
         i = str(i)
         stringedsublist.append(i)
-
+    while len(stringedsublist) < 4:
+        stringedsublist.append('0')
     test = ".".join(stringedsublist)
 
     return test

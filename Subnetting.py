@@ -46,9 +46,9 @@ def questionblendgenerator():
         else:
             fullq = text + str(rnotation)
             print(fullq)
-        answer1 = str(input("Enter your input here: "))
-        if oneortwogen == 0:
 
+        if oneortwogen == 0:
+            answer1 = str(input("Enter your input here: "))
             if str(answer1) == str(dnotation):
 
                 print('Correct!')
@@ -59,6 +59,7 @@ def questionblendgenerator():
                 globallistscore.append(0)
                 return
         else:
+            answer1 = str(input("Enter your input here: /"))
             if str(answer1) == str(cnotation):
                 print('Correct!')
                 globallistscore.append(1)
