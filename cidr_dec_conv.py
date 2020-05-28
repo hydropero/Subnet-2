@@ -17,9 +17,6 @@ def cidrconvert(cidr):
         totalsubsizelist.append(math.floor(total))
 
 
-
-
-
     if cidr >= 8:
         maximum = 256
         total = 0
@@ -64,7 +61,7 @@ def cidrconvert(cidr):
     while len(stringedsublist) < 4:
         stringedsublist.append('0')
     test = ".".join(stringedsublist)
-
+    print(test)
     return test
 
 

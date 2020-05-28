@@ -70,12 +70,38 @@ def final_IP_Quest_Gen():
 def text_IP_Quest_Gen():
     ip_info = final_IP_Quest_Gen()
     select_subnet_mask_type = random.randint(0,1)
-    question = input("If you are given an IP of " + str(ip_info[0]) + " a subnet mask of " + str(ip_info[1][select_subnet_mask_type]) + "\nWhat is the first addressable IP value?\nEnter here: ")
-    print(question)
+    # 0 - first available address
+    if select_subnet_mask_type == 0:
+        question1 = input("Given IP address: " + str(ip_info[0]) + " - subnet mask /" + str(ip_info[1][select_subnet_mask_type])
+                         + "\nWhat is the first available IP address on this subnet?\nEnter here: ")
+    else:
+        question1 = input("Given IP address: " + str(ip_info[0]) + " - subnet mask: " + str(ip_info[1][select_subnet_mask_type])
+                         + "\nWhat is the first available IP address on this subnet?\nEnter here: ")
+    # 1 - last available address
+    if select_subnet_mask_type == 0:
+        question2 = input("What is the last available IP address on this subnet?\nEnter here: ")
+    else:
+        question2 = input("What is the last available IP address on this subnet?\nEnter here: ")
+    # 2 - broadcast address
+    if select_subnet_mask_type == 0:
+        question3 = input("What is the broadcast address of this subnet?\nEnter here: ")
+    else:
+        question3 = input("What is the broadcast address of this subnet?\nEnter here: ")
 
+    # 3 - network address
+    if select_subnet_mask_type == 0:
+        question4 = input("What is the network address of this subnet?\nEnter here: ")
+    else:
+        question4 = input("What is the network address of this subnet?\nEnter here: ")
 
+    listofquestions = []
+    listofquestions.append(question1)
+    listofquestions.append(question2)
+    listofquestions.append(question3)
+    listofquestions.append(question4)
+    listofquestions.append(ip_info)
+    return listofquestions
 
-text_IP_Quest_Gen()
 
 
 

@@ -3,6 +3,9 @@ import sys
 import random
 import cidr_dec_conv
 import re
+import First_Last_Broad_Network_Questions
+
+
 
 
 switchreg = "[^1234a-z]+"
@@ -102,7 +105,7 @@ def test():
     return cidrcalculator()
 
 def test2():
-    print("")
+    return cidrcalculator()
 
 def test3():
     print("Apparently works fine now")
@@ -187,8 +190,13 @@ def cidrcalculator():
 
 
 
+def main():
+    startup()
 
-startup()
+
+
+main()
+
 
 
 
