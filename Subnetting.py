@@ -151,7 +151,7 @@ def optionsmenu():
         print("Please select a tool from the options below\n")
         print("For an in depth subnetting tutorial select ---------------------------> [1]")
         print("To perform a CIDR to decimal subnet conversion or vice versa select --> [2]")
-        print("To determine network/subnet boundaries select ------------------------> [3]")
+        print("To determine network/broadcast/first/last addresses select ------------------------> [3]")
         print("To run the subnetting gauntlet select --------------------------------> [4]")
         switch_answer = input("\nPlease enter your selection here: ")
         list = ['1', '2', '3', '4']

@@ -94,13 +94,25 @@ def text_IP_Quest_Gen():
     else:
         question4 = input("What is the network address of this subnet?\nEnter here: ")
 
+    # 4 - number of available host IPs
+    if select_subnet_mask_type == 0:
+        question5 = input("What is the network address of this subnet?\nEnter here: ")
+    else:
+        question5 = input("What is the network address of this subnet?\nEnter here: ")
+
+
     listofquestions = []
     listofquestions.append(question1)
     listofquestions.append(question2)
     listofquestions.append(question3)
     listofquestions.append(question4)
+    listofquestions.append(question5)
     listofquestions.append(ip_info)
+    print(listofquestions)
     return listofquestions
+
+
+
 
 
 
